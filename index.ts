@@ -35,7 +35,7 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
     vehiclesList.push(newVehicle);
     //console.log(vehicle);
 
-    res.status(201).send({ message: "Vehicle added"});
+    res.status(201).send("Vehicle added");
 })
 
 app.listen(port, () => {
