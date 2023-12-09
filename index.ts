@@ -13,25 +13,29 @@ app.get("/hello", (req: Request, res: Response) => {
 
 // post
 
+interface Vehicle {
+    model: string;
+    color: string;
+    year: number;
+    power: number;
+  }
+
+const vehiclesList: Vehicle[] = [];  
+
 app.post("/vehicle/add", (req: Request, res: Response) => {
     //console.log(req.body);
-    type Vehicle = {
-        model: string,
-        color: string,
-        year: number,
-        power: number
-    }
+   
 
-    let vehicle: Vehicle = {
+    let newVehicle: Vehicle = {
         model: req.body.model,
         color: req.body.color,
         year: req.body.year,
         power: req.body.power
     }
+    vehiclesList.push(newVehicle);
+    //console.log(vehicle);
 
-    console.log(vehicle);
-
-    res.send("Vehicle added");
+    res.status(201).json({ message: "Vehicle added", vehicle: newVehicle });
 })
 
 app.listen(port, () => {

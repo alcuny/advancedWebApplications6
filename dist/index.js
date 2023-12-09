@@ -12,16 +12,18 @@ app.use(express_1.default.json());
 app.get("/hello", (req, res) => {
     res.send("Hello world!####");
 });
-// post
+const vehiclesList = [];
 app.post("/vehicle/add", (req, res) => {
-    let vehicle = {
+    //console.log(req.body);
+    let newVehicle = {
         model: req.body.model,
         color: req.body.color,
         year: req.body.year,
         power: req.body.power
     };
-    console.log(vehicle);
-    res.send("Vehicle added");
+    vehiclesList.push(newVehicle);
+    //console.log(vehicle);
+    res.status(201).json({ message: "Vehicle added", vehicle: newVehicle });
 });
 app.listen(port, () => {
     console.log("server is running at http://localhost:" + port);
