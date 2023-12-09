@@ -23,7 +23,7 @@ app.post("/vehicle/add", (req, res) => {
     };
     vehiclesList.push(newVehicle);
     //console.log(vehicle);
-    res.status(201).json({ message: "Vehicle added", vehicle: newVehicle });
+    res.status(201).send({ message: "Vehicle added" });
 });
 app.listen(port, () => {
     console.log("server is running at http://localhost:" + port);
