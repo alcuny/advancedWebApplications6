@@ -18,6 +18,10 @@ interface Vehicle {
     color: string;
     year: number;
     power: number;
+    bodyType?: string;
+    wheelCount?: number;
+    draft?: number;
+    wingspan?: number;
   }
 
 const vehiclesList: Vehicle[] = [];  
@@ -32,8 +36,26 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
         year: req.body.year,
         power: req.body.power
     }
+    if(req.body.bodyType){
+        //console.log("hei")
+        newVehicle.bodyType = req.body.bodyType;
+        newVehicle.wheelCount = req.body.wheelCount;
+    }
+
+    if(req.body.draft){
+        //console.log("hei")
+        newVehicle.draft = req.body.draft;
+        
+    }
+
+    if(req.body.wingspan){
+        //console.log("hei")
+        newVehicle.wingspan = req.body.wingspan;
+        
+    }
+    
     vehiclesList.push(newVehicle);
-    //console.log(vehicle);
+    console.log(newVehicle);
 
     res.status(201).send("Vehicle added");
 })

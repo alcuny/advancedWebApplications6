@@ -21,9 +21,22 @@ app.post("/vehicle/add", (req, res) => {
         year: req.body.year,
         power: req.body.power
     };
+    if (req.body.bodyType) {
+        //console.log("hei")
+        newVehicle.bodyType = req.body.bodyType;
+        newVehicle.wheelCount = req.body.wheelCount;
+    }
+    if (req.body.draft) {
+        //console.log("hei")
+        newVehicle.draft = req.body.draft;
+    }
+    if (req.body.wingspan) {
+        //console.log("hei")
+        newVehicle.wingspan = req.body.wingspan;
+    }
     vehiclesList.push(newVehicle);
-    //console.log(vehicle);
-    res.status(201).send({ message: "Vehicle added" });
+    console.log(newVehicle);
+    res.status(201).send("Vehicle added");
 });
 app.listen(port, () => {
     console.log("server is running at http://localhost:" + port);
